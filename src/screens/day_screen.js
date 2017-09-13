@@ -82,4 +82,8 @@ const styles = StyleSheet.create({
     height: 500,
     paddingVertical: 75,
   },
+  fragmentText: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+  },
 });
