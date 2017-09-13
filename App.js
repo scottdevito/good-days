@@ -1,6 +1,59 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Constants } from 'expo';
+
+const dayData = {
+  morningData: {
+    weather: 'rain',
+    items: [
+      {
+        title: 'Cold shower',
+        description: 'Take a cold shower.',
+        complete: false,
+      },
+      {
+        title: 'Read a book',
+        description: 'Read an interesting book.',
+        complete: true,
+      },
+    ],
+  },
+  afternoonData: {
+    weather: 'rain',
+    items: [
+      {
+        title: 'Yoga class',
+        description: 'Emerge vinyassa class.',
+        complete: false,
+      },
+      {
+        title: 'Meditate',
+        description: 'Meditate for 15 minutes.',
+        complete: true,
+      },
+      {
+        title: 'Work at coffee shop',
+        description: 'Do some programming at a coffee shop.',
+        complete: false,
+      },
+    ],
+  },
+  eveningData: {
+    weather: 'rain',
+    items: [
+      {
+        title: 'Cold shower',
+        description: 'Take a cold shower.',
+        complete: false,
+      },
+      {
+        title: 'Read a book',
+        description: 'Read an interesting book.',
+        complete: true,
+      },
+    ],
+  },
+};
 
 export default class App extends Component {
   render() {
@@ -12,6 +65,17 @@ export default class App extends Component {
           </Text>
           <Text style={styles.date}>October 3rd</Text>
         </View>
+        <ScrollView style={styles.fragmentsContainer}>
+          <View style={styles.morningFragment}>
+            <Text style={styles.fragmentText}>Morning</Text>
+          </View>
+          <View style={styles.afternoonFragment}>
+            <Text style={styles.fragmentText}>Afternoon</Text>
+          </View>
+          <View style={styles.eveningFragment}>
+            <Text style={styles.fragmentText}>Evening</Text>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -51,5 +115,33 @@ const styles = StyleSheet.create({
   },
   date: {
     color: '#ffffff',
+  },
+  fragmentsContainer: {
+    width: width,
+    height: 500,
+    paddingVertical: 50,
+  },
+  morningFragment: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width,
+    height: 80,
+    backgroundColor: '#56CCF2',
+  },
+  afternoonFragment: {
+    width: width,
+    height: 80,
+    backgroundColor: '#F2C94C',
+  },
+  eveningFragment: {
+    width: width,
+    height: 80,
+    backgroundColor: '#F2994A',
+  },
+  fragmentText: {
+    color: '#ffffff',
+    fontWeight: 'bold',
   },
 });
