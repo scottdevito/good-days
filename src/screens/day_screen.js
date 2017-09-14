@@ -5,7 +5,7 @@ import { Constants } from 'expo';
 import { DayFragment } from '../components/day_fragment';
 
 export default class DayScreen extends Component {
-  _renderFragment({ fragmentColor }) {
+  _renderFragment({ fragmentColor, name }) {
     return (
       <View
         style={{
@@ -18,7 +18,7 @@ export default class DayScreen extends Component {
           backgroundColor: fragmentColor,
         }}
       >
-        <Text style={styles.fragmentText}>Morning</Text>
+        <Text style={styles.fragmentText}>{name}</Text>
       </View>
     );
   }
@@ -75,9 +75,11 @@ const styles = StyleSheet.create({
   },
   day: {
     color: '#ffffff',
+    fontSize: 22,
   },
   date: {
     color: '#ffffff',
+    fontSize: 12,
   },
   fragmentsContainer: {
     flex: 1,
@@ -87,6 +89,7 @@ const styles = StyleSheet.create({
   fragmentText: {
     color: '#ffffff',
     fontWeight: 'bold',
+    fontSize: 18,
   },
   community: {
     height: 75,
@@ -99,5 +102,6 @@ const styles = StyleSheet.create({
   communityText: {
     color: '#ffffff',
     fontWeight: 'bold',
+    fontSize: 18,
   },
 });
