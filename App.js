@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  StatusBar,
+} from 'react-native';
 import { Constants } from 'expo';
 
 import { DayFragment } from './src/components/day_fragment';
@@ -68,6 +75,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
         <DayScreen dayData={dayData} />
       </View>
     );
