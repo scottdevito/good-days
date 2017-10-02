@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Constants } from 'expo';
+import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { DayFragment } from '../components/day_fragment';
 
@@ -12,13 +13,17 @@ export default class DayScreen extends Component {
           flex: 1,
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
           width: width,
           height: 80,
           backgroundColor: fragmentColor,
         }}
       >
-        <Text style={styles.fragmentText}>{name}</Text>
+        <MaterialIcons name="wb-sunny" size={28} color="white" />
+        <Text style={styles.fragmentText}>
+          {name}          
+        </Text>
+        <MaterialCommunityIcons name="plus" size={34} color="white" />
       </View>
     );
   }

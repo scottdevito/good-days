@@ -1,8 +1,8 @@
 {
   "name": "good-days",
   "version": "0.0.0",
-  "description": "Hello Expo!",
-  "author": null,
+  "description": "An app to help you: 1. Reflect on what your perfect day would look like 2. Help you plan your days with this reflection in mind in order to improve the quality of your free time",
+  "author": "Scott DeVito",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
