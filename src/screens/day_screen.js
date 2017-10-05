@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, Dimensions, ScrollView } from "react-native";
 import { Constants } from "expo";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { CheckBox } from 'react-native-elements'
 
 import { DayFragment } from "../components/day_fragment";
 import { Items } from "../components/items";
@@ -33,7 +34,15 @@ export default class DayScreen extends Component {
     return items.map(item => {
       return (
         <View key={item.id} >
-          <Text>{item.title}</Text>
+        <CheckBox
+          title={item.title}
+          checked={true}
+          iconType='material'
+          checkedIcon='check'
+          uncheckedIcon='check-box-outline-blank'
+          checkedColor='black'
+          checked={false}
+        />
         </View>
       );
     })
