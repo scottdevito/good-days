@@ -88,9 +88,6 @@ export default class DayScreen extends Component {
               data={this.props.dayData.eveningData} 
             />
         </ScrollView>
-        <View style={styles.community}>
-          <Text style={styles.communityText}>Community</Text>
-        </View>
       </View>
     );
   }
@@ -144,17 +141,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  community: {
-    height: 75,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#6FCF97",
-    width: width
-  },
-  communityText: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 18
-  }
 });
