@@ -4,6 +4,7 @@ import { Constants } from "expo";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { DayFragment } from "../components/day_fragment";
+import { Items } from "../components/items";
 
 export default class DayScreen extends Component {
   _renderFragment({ fragmentColor, name }) {
@@ -28,7 +29,18 @@ export default class DayScreen extends Component {
     );
   }
 
+  _renderItems({ items }) {
+    return items.map(item => {
+      return (
+        <View key={item.id} >
+          <Text>{item.title}</Text>
+        </View>
+      );
+    })
+  }
+
   render() {
+    console.log(this.props.dayData.morningData);
     return (
       <View>
         <View style={styles.dayHeader}>
@@ -46,14 +58,26 @@ export default class DayScreen extends Component {
             _renderFragment={this._renderFragment}
             data={this.props.dayData.morningData}
           />
+            <Items 
+              _renderItems={this._renderItems} 
+              data={this.props.dayData.morningData} 
+            />
           <DayFragment
             _renderFragment={this._renderFragment}
             data={this.props.dayData.afternoonData}
           />
+            <Items 
+              _renderItems={this._renderItems} 
+              data={this.props.dayData.afternoonData} 
+            />
           <DayFragment
             _renderFragment={this._renderFragment}
             data={this.props.dayData.eveningData}
           />
+            <Items 
+              _renderItems={this._renderItems} 
+              data={this.props.dayData.eveningData} 
+            />
         </ScrollView>
         <View style={styles.community}>
           <Text style={styles.communityText}>Community</Text>
