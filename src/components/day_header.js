@@ -19,7 +19,7 @@ export const DayHeader = () => {
 
 const styles = StyleSheet.create({
     dayHeader: {
-      flex: .15,
+      flex: .12,
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-around",
