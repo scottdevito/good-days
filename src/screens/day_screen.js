@@ -51,7 +51,7 @@ export default class DayScreen extends Component {
   render() {
     console.log(this.props.dayData.morningData);
     return (
-        <View style={{flex: 2}}>
+        <View style={{flex: 1}}>
           <View style={styles.dayHeader}>
           <MaterialCommunityIcons name="menu" size={34} color="white" />
           <View style={styles.dayHeaderInfo}>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   fragmentsContainer: {
-    flex: 8,
+    flex: 1,
     width: width,
   },
   fragmentText: {
