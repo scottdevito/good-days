@@ -11,7 +11,7 @@ import { Items } from '../components/items';
 const dayData = {
   morningData: {
     name: 'Morning',
-    fragmentColor: '#00bcd4',
+    fragmentColor: '#4dd0e1',
     weather: 'rain',
     items: [
       {
@@ -30,7 +30,7 @@ const dayData = {
   },
   afternoonData: {
     name: 'Afternoon',
-    fragmentColor: '#ffc107',
+    fragmentColor: '#ffd54f',
     weather: 'rain',
     items: [
       {
@@ -55,7 +55,7 @@ const dayData = {
   },
   eveningData: {
     name: 'Evening',
-    fragmentColor: '#ff5722',
+    fragmentColor: '#ff8a65',
     weather: 'rain',
     items: [
       {
