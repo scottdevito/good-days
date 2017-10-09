@@ -9,10 +9,11 @@ export const Welcome = () => {
           What's a good day look like for you?
         </Text>
       </View>
-      <View style={styles.mountains}>
+      <View style={styles.mountainsContainer}>
         <Image
           source={require('../../assets/welcome-logo.png')}
           fadeDuration={0}
+          style={styles.mountains}
           resizeMode={'contain'}
         />
       </View>
@@ -32,22 +33,22 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#00BCD4',
+    backgroundColor: '#ffffff',
   },
-  mountains: {
+  mountainsContainer: {
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    width: width,
+  },
+  mountains: {
+    width: '100%',
   },
   grass: {
     flex: 1,
-    backgroundColor: '#8BC34A',
+    backgroundColor: '#ffffff',
   },
   welcomeText: {
     fontSize: 28,
     textAlign: 'center',
-    color: 'white',
-    fontWeight: 'bold',
   },
 });
