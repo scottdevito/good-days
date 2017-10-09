@@ -17,8 +17,18 @@ import { WelcomeScreen } from './src/screens/welcome_screen';
 export default class App extends Component {
   render() {
     const MainNavigator = TabNavigator({
-      welcome: { screen: WelcomeScreen },
-      dayScreen: { screen: DayScreen },
+      welcome: {
+        screen: WelcomeScreen,
+        navigationOptions: ({ navigation }) => ({
+          tabBarVisible: false,
+        }),
+      },
+      dayScreen: {
+        screen: DayScreen,
+        navigationOptions: ({ navigation }) => ({
+          tabBarVisible: false,
+        }),
+      },
     });
 
     return <MainNavigator />;
