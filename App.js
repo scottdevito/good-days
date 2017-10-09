@@ -8,87 +8,34 @@ import {
   StatusBar,
 } from 'react-native';
 import { Constants } from 'expo';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import { DayFragment } from './src/components/day_fragment';
 import DayScreen from './src/screens/day_screen';
-
-const dayData = {
-  morningData: {
-    name: 'Morning',
-    fragmentColor: '#56CCF2',
-    weather: 'rain',
-    items: [
-      {
-        id: '09829',
-        title: 'Cold shower',
-        description: 'Take a cold shower.',
-        complete: false,
-      },
-      {
-        id: '3920',
-        title: 'Read a book',
-        description: 'Read an interesting book.',
-        complete: true,
-      },
-    ],
-  },
-  afternoonData: {
-    name: 'Afternoon',
-    fragmentColor: '#F2C94C',
-    weather: 'rain',
-    items: [
-      {
-        id: '0945829',        
-        title: 'Yoga class',
-        description: 'Emerge vinyassa class.',
-        complete: false,
-      },
-      {
-        id: '0982913',        
-        title: 'Meditate',
-        description: 'Meditate for 15 minutes.',
-        complete: true,
-      },
-      {
-        id: '0239829',        
-        title: 'Work at coffee shop',
-        description: 'Do some programming at a coffee shop.',
-        complete: false,
-      },
-    ],
-  },
-  eveningData: {
-    name: 'Evening',
-    fragmentColor: '#F2994A',
-    weather: 'rain',
-    items: [
-      {
-        id: '09252829',        
-        title: 'Cold shower',
-        description: 'Take a cold shower.',
-        complete: false,
-      },
-      {
-        id: '09811229',        
-        title: 'Read a book',
-        description: 'Read an interesting book.',
-        complete: true,
-      },
-    ],
-  },
-};
+import { WelcomeScreen } from './src/screens/welcome_screen';
 
 export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor="black" barStyle="light-content" />
-        <DayScreen dayData={dayData} />
-      </View>
-    );
+    const MainNavigator = TabNavigator({
+      welcome: {
+        screen: WelcomeScreen,
+        navigationOptions: ({ navigation }) => ({
+          tabBarVisible: false,
+        }),
+      },
+      dayScreen: {
+        screen: DayScreen,
+        navigationOptions: ({ navigation }) => ({
+          tabBarVisible: false,
+        }),
+      },
+    });
+
+    return <MainNavigator />;
   }
 }
 
+// Old styles and height offset for status bar from before routing
 const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -99,10 +46,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
-  },
-  fragmentsContainer: {
-    width: width,
-    height: 500,
-    paddingVertical: 50,
   },
 });
