@@ -10,7 +10,6 @@ import {
 import { Constants } from 'expo';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 
-import { DayFragment } from './src/components/day_fragment';
 import DayScreen from './src/screens/day_screen';
 import { WelcomeScreen } from './src/screens/welcome_screen';
 

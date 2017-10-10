@@ -13,9 +13,7 @@ import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { CheckBox } from 'react-native-elements';
 import Collapsible from 'react-native-collapsible';
 
-import { DayFragment } from '../components/day_fragment';
 import { DayHeader } from '../components/day_header';
-import { Items } from '../components/items';
 
 const dayData = {
   morningData: {
@@ -152,7 +150,7 @@ export default class DayScreen extends Component {
         <ScrollView style={styles.fragmentsContainer}>
           {this._renderFragment(dayData.morningData)}
           <Collapsible
-            duration={700}
+            duration={500}
             collapsed={this.state.morningCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
@@ -162,7 +160,7 @@ export default class DayScreen extends Component {
 
           {this._renderFragment(dayData.afternoonData)}
           <Collapsible
-            duration={700}
+            duration={500}
             collapsed={this.state.afternoonCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
@@ -172,7 +170,7 @@ export default class DayScreen extends Component {
 
           {this._renderFragment(dayData.eveningData)}
           <Collapsible
-            duration={700}
+            duration={500}
             collapsed={this.state.eveningCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
