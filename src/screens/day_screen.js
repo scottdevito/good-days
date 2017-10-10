@@ -179,25 +179,6 @@ export default class DayScreen extends Component {
           >
             <View>{this._renderItems(dayData.eveningData)}</View>
           </Collapsible>
-
-          {/* <DayFragment
-            _renderFragment={this._renderFragment}
-            data={dayData.morningData}
-          />
-          <Items _renderItems={this._renderItems} data={dayData.morningData} />
-          <DayFragment
-            _renderFragment={this._renderFragment}
-            data={dayData.afternoonData}
-          />
-          <Items
-            _renderItems={this._renderItems}
-            data={dayData.afternoonData}
-          />
-          <DayFragment
-            _renderFragment={this._renderFragment}
-            data={dayData.eveningData}
-          />
-          <Items _renderItems={this._renderItems} data={dayData.eveningData} /> */}
         </ScrollView>
       </View>
     );
