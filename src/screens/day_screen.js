@@ -19,6 +19,7 @@ import { StatusBar } from '../components/status_bar';
 const dayData = {
   morningData: {
     name: 'Morning',
+    id: 'morning',
     fragmentColor: '#4dd0e1',
     weather: 'rain',
     items: [
@@ -38,6 +39,7 @@ const dayData = {
   },
   afternoonData: {
     name: 'Afternoon',
+    id: 'afternoon',
     fragmentColor: '#ffd54f',
     weather: 'rain',
     items: [
@@ -63,6 +65,7 @@ const dayData = {
   },
   eveningData: {
     name: 'Evening',
+    id: 'evening',
     fragmentColor: '#ff8a65',
     weather: 'rain',
     items: [
@@ -70,13 +73,27 @@ const dayData = {
         id: '09252829',
         title: 'Cold shower',
         description: 'Take a cold shower.',
-        complete: false,
+        complete: true,
       },
       {
         id: '09811229',
         title: 'Read a book',
         description: 'Read an interesting book.',
         complete: true,
+      },
+    ],
+  },
+  wholeDayData: {
+    name: 'Whole Day',
+    id: 'wholeDay',
+    fragmentColor: '#81c784',
+    weather: 'rain',
+    items: [
+      {
+        id: '09252829',
+        title: 'Breathing exercises while driving',
+        description: 'Take a cold shower.',
+        complete: false,
       },
     ],
   },
@@ -87,13 +104,14 @@ export default class DayScreen extends Component {
     morningCollapsed: true,
     afternoonCollapsed: true,
     eveningCollapsed: true,
+    wholeDayCollapsed: true,
   };
 
-  _renderFragment({ fragmentColor, name }) {
+  _renderFragment({ fragmentColor, name, id }) {
     return (
       <TouchableHighlight
         onPress={() => {
-          this._toggleExpanded(name);
+          this._toggleExpanded(id);
         }}
       >
         <View
@@ -118,8 +136,8 @@ export default class DayScreen extends Component {
   }
 
   // Open and close fragments based on which fragment is pressed
-  _toggleExpanded = name => {
-    let fragmentName = `${name.toLowerCase()}Collapsed`;
+  _toggleExpanded = id => {
+    let fragmentName = `${id}Collapsed`;
 
     this.setState((prevState, props) => {
       return { [fragmentName]: !prevState[fragmentName] };
@@ -137,7 +155,7 @@ export default class DayScreen extends Component {
             checkedIcon="check"
             uncheckedIcon="check-box-outline-blank"
             checkedColor="black"
-            checked={false}
+            checked={item.complete}
           />
         </View>
       );
@@ -178,6 +196,16 @@ export default class DayScreen extends Component {
             easing={Easing.inOut(Easing.quad)}
           >
             <View>{this._renderItems(dayData.eveningData)}</View>
+          </Collapsible>
+
+          {this._renderFragment(dayData.wholeDayData)}
+          <Collapsible
+            duration={500}
+            collapsed={this.state.wholeDayCollapsed}
+            align="center"
+            easing={Easing.inOut(Easing.quad)}
+          >
+            <View>{this._renderItems(dayData.wholeDayData)}</View>
           </Collapsible>
         </ScrollView>
       </View>
