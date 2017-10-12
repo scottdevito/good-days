@@ -7,7 +7,6 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-import { Constants } from 'expo';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import DayScreen from './src/screens/day_screen';
@@ -33,17 +32,3 @@ export default class App extends Component {
     return <MainNavigator />;
   }
 }
-
-// Old styles and height offset for status bar from before routing
-const { width, height } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  container: {
-    height: height,
-    width: width,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-  },
-});

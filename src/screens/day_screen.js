@@ -14,6 +14,7 @@ import { CheckBox } from 'react-native-elements';
 import Collapsible from 'react-native-collapsible';
 
 import { DayHeader } from '../components/day_header';
+import { StatusBar } from '../components/status_bar';
 
 const dayData = {
   morningData: {
@@ -146,6 +147,7 @@ export default class DayScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar />
         <DayHeader />
         <ScrollView style={styles.fragmentsContainer}>
           {this._renderFragment(dayData.morningData)}
