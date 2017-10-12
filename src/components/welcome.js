@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#8bf6ff',
   },
   mountainsContainer: {
-    flex: 3,
+    flex: 1.5,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -45,10 +45,11 @@ const styles = StyleSheet.create({
   },
   grass: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#e1ffb1',
   },
   welcomeText: {
     fontSize: 28,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
