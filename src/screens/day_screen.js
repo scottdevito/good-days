@@ -168,9 +168,19 @@ export default class DayScreen extends Component {
         <StatusBar />
         <DayHeader />
         <ScrollView style={styles.fragmentsContainer}>
+          {this._renderFragment(dayData.wholeDayData)}
+          <Collapsible
+            duration={400}
+            collapsed={this.state.wholeDayCollapsed}
+            align="center"
+            easing={Easing.inOut(Easing.quad)}
+          >
+            <View>{this._renderItems(dayData.wholeDayData)}</View>
+          </Collapsible>
+
           {this._renderFragment(dayData.morningData)}
           <Collapsible
-            duration={500}
+            duration={400}
             collapsed={this.state.morningCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
@@ -180,7 +190,7 @@ export default class DayScreen extends Component {
 
           {this._renderFragment(dayData.afternoonData)}
           <Collapsible
-            duration={500}
+            duration={400}
             collapsed={this.state.afternoonCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
@@ -190,22 +200,12 @@ export default class DayScreen extends Component {
 
           {this._renderFragment(dayData.eveningData)}
           <Collapsible
-            duration={500}
+            duration={400}
             collapsed={this.state.eveningCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
           >
             <View>{this._renderItems(dayData.eveningData)}</View>
-          </Collapsible>
-
-          {this._renderFragment(dayData.wholeDayData)}
-          <Collapsible
-            duration={500}
-            collapsed={this.state.wholeDayCollapsed}
-            align="center"
-            easing={Easing.inOut(Easing.quad)}
-          >
-            <View>{this._renderItems(dayData.wholeDayData)}</View>
           </Collapsible>
         </ScrollView>
       </View>
