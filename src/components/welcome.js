@@ -24,7 +24,10 @@ export const Welcome = ({ navigate }) => {
           onPress={() => {
             navigate('mainFlow');
           }}
+          backgroundColor={'#ff8a65'}
+          fontSize={20}
           large
+          raised
         />
       </View>
     </View>

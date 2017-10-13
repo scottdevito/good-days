@@ -102,7 +102,7 @@ const dayData = {
 export default class DayScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'Home',
-    drawerIcon: ({ tintColor }) => <Text>Back</Text>,
+    drawerIcon: ({ tintColor }) => <MaterialIcons name="home" size={20} />,
   };
 
   state = {
