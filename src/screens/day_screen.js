@@ -100,6 +100,11 @@ const dayData = {
 };
 
 export default class DayScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Home',
+    drawerIcon: ({ tintColor }) => <Text>Back</Text>,
+  };
+
   state = {
     morningCollapsed: true,
     afternoonCollapsed: true,
@@ -166,7 +171,7 @@ export default class DayScreen extends Component {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar />
-        <DayHeader />
+        <DayHeader toggleDrawer={this.props.navigation.navigate} />
         <ScrollView style={styles.fragmentsContainer}>
           {this._renderFragment(dayData.wholeDayData)}
           <Collapsible

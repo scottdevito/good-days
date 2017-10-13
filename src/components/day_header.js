@@ -2,10 +2,17 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export const DayHeader = () => {
+export const DayHeader = ({ toggleDrawer }) => {
   return (
     <View style={styles.dayHeader}>
-      <MaterialCommunityIcons name="menu" size={34} color="white" />
+      <MaterialCommunityIcons
+        name="menu"
+        size={34}
+        color="white"
+        onPress={() => {
+          toggleDrawer('DrawerToggle');
+        }}
+      />
       <View style={styles.dayHeaderInfo}>
         <Text h4 style={styles.day}>
           Monday
