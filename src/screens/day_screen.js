@@ -83,9 +83,9 @@ const dayData = {
       },
     ],
   },
-  wholeDayData: {
-    name: 'Whole Day',
-    id: 'wholeDay',
+  allDayData: {
+    name: 'All Day',
+    id: 'allDay',
     fragmentColor: '#81c784',
     weather: 'rain',
     items: [
@@ -103,13 +103,14 @@ export default class DayScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'Home',
     drawerIcon: ({ tintColor }) => <MaterialIcons name="home" size={20} />,
+    gesturesEnabled: false,
   };
 
   state = {
     morningCollapsed: true,
     afternoonCollapsed: true,
     eveningCollapsed: true,
-    wholeDayCollapsed: true,
+    allDayCollapsed: true,
   };
 
   _renderFragment({ fragmentColor, name, id }) {
@@ -173,14 +174,14 @@ export default class DayScreen extends Component {
         <StatusBar />
         <DayHeader toggleDrawer={this.props.navigation.navigate} />
         <ScrollView style={styles.fragmentsContainer}>
-          {this._renderFragment(dayData.wholeDayData)}
+          {this._renderFragment(dayData.allDayData)}
           <Collapsible
             duration={400}
-            collapsed={this.state.wholeDayCollapsed}
+            collapsed={this.state.allDayCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
           >
-            <View>{this._renderItems(dayData.wholeDayData)}</View>
+            <View>{this._renderItems(dayData.allDayData)}</View>
           </Collapsible>
 
           {this._renderFragment(dayData.morningData)}

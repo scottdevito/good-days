@@ -7,7 +7,7 @@ export const Welcome = ({ navigate }) => {
     <View style={styles.container}>
       <View style={styles.sky}>
         <Text style={styles.welcomeText}>
-          What's a good day look like for you?
+          What does your best day look like?
         </Text>
       </View>
       <View style={styles.mountainsContainer}>
