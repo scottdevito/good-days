@@ -11,6 +11,7 @@ import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 import DayScreen from './src/screens/day_screen';
 import { WelcomeScreen } from './src/screens/welcome_screen';
+import AllMyItemsScreen from './src/screens/all_my_items_screen';
 
 export default class App extends Component {
   render() {
@@ -25,6 +26,9 @@ export default class App extends Component {
         screen: DrawerNavigator({
           dayScreen: {
             screen: DayScreen,
+          },
+          allMyItems: {
+            screen: AllMyItemsScreen,
           },
         }),
         navigationOptions: ({ navigation }) => ({
