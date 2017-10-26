@@ -7,25 +7,32 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-import { Constants } from 'expo';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 import DayScreen from './src/screens/day_screen';
 import { WelcomeScreen } from './src/screens/welcome_screen';
+import AllMyItemsScreen from './src/screens/all_my_items_screen';
 
 export default class App extends Component {
   render() {
-    const MainNavigator = TabNavigator({
+    const MainNavigator = StackNavigator({
       welcome: {
         screen: WelcomeScreen,
         navigationOptions: ({ navigation }) => ({
-          tabBarVisible: false,
+          header: null,
         }),
       },
-      dayScreen: {
-        screen: DayScreen,
+      mainFlow: {
+        screen: DrawerNavigator({
+          dayScreen: {
+            screen: DayScreen,
+          },
+          allMyItems: {
+            screen: AllMyItemsScreen,
+          },
+        }),
         navigationOptions: ({ navigation }) => ({
-          tabBarVisible: false,
+          header: null,
         }),
       },
     });
@@ -33,17 +40,3 @@ export default class App extends Component {
     return <MainNavigator />;
   }
 }
-
-// Old styles and height offset for status bar from before routing
-const { width, height } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  container: {
-    height: height,
-    width: width,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-  },
-});

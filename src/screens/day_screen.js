@@ -14,10 +14,12 @@ import { CheckBox } from 'react-native-elements';
 import Collapsible from 'react-native-collapsible';
 
 import { DayHeader } from '../components/day_header';
+import { StatusBar } from '../components/status_bar';
 
 const dayData = {
   morningData: {
     name: 'Morning',
+    id: 'morning',
     fragmentColor: '#4dd0e1',
     weather: 'rain',
     items: [
@@ -37,6 +39,7 @@ const dayData = {
   },
   afternoonData: {
     name: 'Afternoon',
+    id: 'afternoon',
     fragmentColor: '#ffd54f',
     weather: 'rain',
     items: [
@@ -62,6 +65,7 @@ const dayData = {
   },
   eveningData: {
     name: 'Evening',
+    id: 'evening',
     fragmentColor: '#ff8a65',
     weather: 'rain',
     items: [
@@ -69,7 +73,7 @@ const dayData = {
         id: '09252829',
         title: 'Cold shower',
         description: 'Take a cold shower.',
-        complete: false,
+        complete: true,
       },
       {
         id: '09811229',
@@ -79,20 +83,41 @@ const dayData = {
       },
     ],
   },
+  allDayData: {
+    name: 'All Day',
+    id: 'allDay',
+    fragmentColor: '#81c784',
+    weather: 'rain',
+    items: [
+      {
+        id: '09252829',
+        title: 'Breathing exercises while driving',
+        description: 'Take a cold shower.',
+        complete: false,
+      },
+    ],
+  },
 };
 
 export default class DayScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Today',
+    drawerIcon: ({ tintColor }) => <MaterialIcons name="home" size={20} />,
+    gesturesEnabled: false,
+  };
+
   state = {
     morningCollapsed: true,
     afternoonCollapsed: true,
     eveningCollapsed: true,
+    allDayCollapsed: true,
   };
 
-  _renderFragment({ fragmentColor, name }) {
+  _renderFragment({ fragmentColor, name, id }) {
     return (
       <TouchableHighlight
         onPress={() => {
-          this._toggleExpanded(name);
+          this._toggleExpanded(id);
         }}
       >
         <View
@@ -117,8 +142,8 @@ export default class DayScreen extends Component {
   }
 
   // Open and close fragments based on which fragment is pressed
-  _toggleExpanded = name => {
-    let fragmentName = `${name.toLowerCase()}Collapsed`;
+  _toggleExpanded = id => {
+    let fragmentName = `${id}Collapsed`;
 
     this.setState((prevState, props) => {
       return { [fragmentName]: !prevState[fragmentName] };
@@ -136,7 +161,7 @@ export default class DayScreen extends Component {
             checkedIcon="check"
             uncheckedIcon="check-box-outline-blank"
             checkedColor="black"
-            checked={false}
+            checked={item.complete}
           />
         </View>
       );
@@ -146,11 +171,22 @@ export default class DayScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <DayHeader />
+        <StatusBar />
+        <DayHeader toggleDrawer={this.props.navigation.navigate} />
         <ScrollView style={styles.fragmentsContainer}>
+          {this._renderFragment(dayData.allDayData)}
+          <Collapsible
+            duration={400}
+            collapsed={this.state.allDayCollapsed}
+            align="center"
+            easing={Easing.inOut(Easing.quad)}
+          >
+            <View>{this._renderItems(dayData.allDayData)}</View>
+          </Collapsible>
+
           {this._renderFragment(dayData.morningData)}
           <Collapsible
-            duration={500}
+            duration={400}
             collapsed={this.state.morningCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
@@ -160,7 +196,7 @@ export default class DayScreen extends Component {
 
           {this._renderFragment(dayData.afternoonData)}
           <Collapsible
-            duration={500}
+            duration={400}
             collapsed={this.state.afternoonCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
@@ -170,7 +206,7 @@ export default class DayScreen extends Component {
 
           {this._renderFragment(dayData.eveningData)}
           <Collapsible
-            duration={500}
+            duration={400}
             collapsed={this.state.eveningCollapsed}
             align="center"
             easing={Easing.inOut(Easing.quad)}
